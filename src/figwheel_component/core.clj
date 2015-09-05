@@ -9,7 +9,7 @@
     (if (:started this)
       this
       (let [project (->> "project.clj" slurp read-string (drop 3) (apply hash-map))
-            fighweel-options (-> project :figwheel)
+            figwheel-options (-> project :figwheel)
             build (-> project :cljsbuild :builds build)
             {:keys [source-paths compiler]} build]
         (repl/start-figwheel! {:figwheel-options figwheel-options
